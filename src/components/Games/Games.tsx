@@ -1,26 +1,63 @@
+import { useEffect, useState } from 'react';
+import { Header, Loader } from 'semantic-ui-react';
+import { toast } from 'react-toastify';
+
+import { Game } from '@components/Game';
+import { BASE_API } from '@constants';
+
+type Game = {
+  name: string;
+  description: string;
+  code: string;
+  icon: string;
+  categoryIds: number[];
+};
+
 export const Games = () => {
+  const [games, setGames] = useState<Game[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchGames = async () => {
+      setIsLoading(true);
+
+      try {
+        const response = await fetch(`${BASE_API}/games`);
+        const data = await response.json();
+
+        setGames(data);
+      } catch (error: unknown) {
+        console.error('🚀 ~ file: Games.tsx:31 ~ fetchGames ~ error:', error);
+
+        toast.error('Something went wrong! Please try again.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchGames();
+  }, []);
+
   return (
     <div className='twelve wide column'>
-      <h3 className='ui dividing header'>Games</h3>
-      <div className='ui relaxed divided game items links'>
-        <div className='game item'>
-          <div className='ui small image'>
-            <img src='' alt='game-icon' />
-          </div>
-          <div className='content'>
-            <div className='header'>
-              <b className='name'></b>
-            </div>
-            <div className='description'></div>
-            <div className='extra'>
-              <div className='play ui right floated secondary button inverted'>
-                Play
-                <i className='right chevron icon'></i>
-              </div>
-            </div>
-          </div>
+      <Header as='h3' dividing={true}>
+        Games
+      </Header>
+      {isLoading ? (
+        <Loader active={true} inline='centered' size='big' />
+      ) : (
+        <div className='ui relaxed divided game items links'>
+          {games.map(({ code, name, icon, description }) => (
+            <Game
+              key={code}
+              code={code}
+              description={description}
+              icon={icon}
+              name={name}
+            />
+          ))}
         </div>
-      </div>
+      )}
     </div>
   );
 };

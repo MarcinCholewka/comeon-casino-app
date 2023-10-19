@@ -19,6 +19,7 @@ const players = {
   },
 };
 
+// eslint-disable-next-line no-undef
 module.exports = (request, response, next) => {
   if (request.method === 'POST') {
     if (request.path === '/login') {
