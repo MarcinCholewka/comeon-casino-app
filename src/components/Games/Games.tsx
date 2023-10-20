@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Header, Loader } from 'semantic-ui-react';
+import { Grid, Header, Loader } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 
-import { Game } from '@components/Game';
+import { GameItem } from '@components/GameItem';
 import { BASE_API } from '@constants';
 
 type Game = {
@@ -39,7 +39,7 @@ export const Games = () => {
   }, []);
 
   return (
-    <div className='twelve wide column'>
+    <Grid.Column width='twelve'>
       <Header as='h3' dividing={true}>
         Games
       </Header>
@@ -48,7 +48,7 @@ export const Games = () => {
       ) : (
         <div className='ui relaxed divided game items links'>
           {games.map(({ code, name, icon, description }) => (
-            <Game
+            <GameItem
               key={code}
               code={code}
               description={description}
@@ -58,6 +58,6 @@ export const Games = () => {
           ))}
         </div>
       )}
-    </div>
+    </Grid.Column>
   );
 };

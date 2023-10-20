@@ -7,7 +7,7 @@ type Props = {
   name: string;
 };
 
-export const Game = ({ code, description, icon, name }: Props) => {
+export const GameItem = ({ code, description, icon, name }: Props) => {
   const handlePlayClick = async () => {
     console.info('PLAY TIME =>', code);
   };
