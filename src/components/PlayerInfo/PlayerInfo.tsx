@@ -1,4 +1,4 @@
-import { Button, Icon } from 'semantic-ui-react';
+import { Button, Icon, Grid, List, Image } from 'semantic-ui-react';
 
 import { BASE_API } from '@constants';
 import { useAuth } from '@auth/AuthWrapper';
@@ -37,22 +37,20 @@ export const PlayerInfo = () => {
   };
 
   return (
-    <div className='twelve wide column'>
-      <div className='ui list'>
-        <div className='player item'>
-          <img className='ui avatar image' src={avatar} alt='avatar' />
-          <div className='content'>
-            <div className='header'>
-              <b className='name'>{name}</b>
-            </div>
+    <Grid.Column largeScreen='12' tablet='10' computer='10'>
+      <List size='tiny'>
+        <List.Item className='player'>
+          <Image className='avatar' src={avatar} alt='avatar' />
+          <List.Content>
+            <List.Header>{name}</List.Header>
             <div className='description event'>{event}</div>
-          </div>
-        </div>
-      </div>
+          </List.Content>
+        </List.Item>
+      </List>
       <Button secondary={true} onClick={handleLogout}>
         <Icon name='chevron left' />
         Log Out
       </Button>
-    </div>
+    </Grid.Column>
   );
 };

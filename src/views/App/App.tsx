@@ -12,7 +12,7 @@ export const App = () => {
     <AuthWrapper>
       <GamesFiltersProvider>
         <Logo />
-        <div className='bg-white my-0 mx-auto pt-[2rem] px-[2rem] pb-[7rem] max-w-[990px] rounded'>
+        <div className='mx-6 sm:mx-auto bg-white my-0 mx-auto pt-[2rem] px-[2rem] pb-[7rem] max-w-[990px] rounded'>
           <Outlet />
         </div>
         <ToastContainer />
