@@ -10,13 +10,13 @@ import { Logo } from '@components/Logo';
 export const App = () => {
   return (
     <AuthWrapper>
-      <Logo />
-      <div className='bg-white my-0 mx-auto pt-[2rem] px-[2rem] pb-[7rem] max-w-[990px] rounded'>
-        <GamesFiltersProvider>
+      <GamesFiltersProvider>
+        <Logo />
+        <div className='bg-white my-0 mx-auto pt-[2rem] px-[2rem] pb-[7rem] max-w-[990px] rounded'>
           <Outlet />
-        </GamesFiltersProvider>
-      </div>
-      <ToastContainer />
+        </div>
+        <ToastContainer />
+      </GamesFiltersProvider>
     </AuthWrapper>
   );
 };
