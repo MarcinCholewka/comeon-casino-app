@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
-import { Grid, Header, Loader } from 'semantic-ui-react';
+import { Card, Grid, Header, Image, Loader } from 'semantic-ui-react';
+import { isEmpty } from 'lodash';
 import { toast } from 'react-toastify';
+import { useEffect, useMemo, useState } from 'react';
 
-import { GameItem } from '@components/GameItem';
 import { BASE_API } from '@constants';
+import { GameItem } from '@components/GameItem';
+import { useGamesFilters } from '@hooks/useGamesFilterContext';
+import searchImage from '@assets/search/search-image.jpg';
 
-type Game = {
+export type TGame = {
   name: string;
   description: string;
   code: string;
@@ -14,8 +17,9 @@ type Game = {
 };
 
 export const Games = () => {
-  const [games, setGames] = useState<Game[]>([]);
+  const [games, setGames] = useState<TGame[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { filters } = useGamesFilters();
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -38,6 +42,16 @@ export const Games = () => {
     fetchGames();
   }, []);
 
+  const filteredGames = useMemo(() => {
+    const { category, keyword } = filters;
+
+    return games.filter(
+      (game) =>
+        game.categoryIds.includes(category) &&
+        game.name.toLowerCase().includes(keyword.toLowerCase()),
+    );
+  }, [filters, games]);
+
   return (
     <Grid.Column width='twelve'>
       <Header as='h3' dividing={true}>
@@ -47,15 +61,25 @@ export const Games = () => {
         <Loader active={true} inline='centered' size='big' />
       ) : (
         <div className='ui relaxed divided game items links'>
-          {games.map(({ code, name, icon, description }) => (
-            <GameItem
-              key={code}
-              code={code}
-              description={description}
-              icon={icon}
-              name={name}
-            />
-          ))}
+          {isEmpty(filteredGames) ? (
+            <Card centered={true} color='olive'>
+              <Image src={searchImage} />
+              <Card.Content>
+                <Card.Header className='!text-[#8EB50E]' textAlign='center'>
+                  No results found
+                </Card.Header>
+                <Card.Description textAlign='center'>
+                  We could't find what you searched for.
+                  <br />
+                  Try searching again.
+                </Card.Description>
+              </Card.Content>
+            </Card>
+          ) : (
+            filteredGames.map((game) => (
+              <GameItem key={game.code} game={game} />
+            ))
+          )}
         </div>
       )}
     </Grid.Column>

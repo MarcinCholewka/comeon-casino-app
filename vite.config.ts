@@ -12,6 +12,7 @@ export default defineConfig({
       "@hooks": "/src/hooks",
       "@mock": "/src/mock",
       "@routes": "/src/routes",
+      "@utils": "/src/utils",
       "@views": "/src/views",
     },
   },

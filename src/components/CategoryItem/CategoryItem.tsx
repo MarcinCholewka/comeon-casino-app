@@ -1,14 +1,22 @@
+import { List } from 'semantic-ui-react';
+
+import { TCategory } from '@components/Categories';
+import { useGamesFilters } from '@hooks/useGamesFilterContext';
+
 type Props = {
-  name: string;
-  id: number;
+  category: TCategory;
 };
 
-export const CategoryItem = ({ name }: Props) => {
+export const CategoryItem = ({ category }: Props) => {
+  const { id, name } = category;
+  const { setCategory, filters } = useGamesFilters();
+  const activeCategory = filters.category === id;
+
+  const handleCategoryClick = () => setCategory(id);
+
   return (
-    <div className='category item'>
-      <div className='content'>
-        <div className='header'>{name}</div>
-      </div>
-    </div>
+    <List.Item active={activeCategory} onClick={handleCategoryClick}>
+      {name}
+    </List.Item>
   );
 };
