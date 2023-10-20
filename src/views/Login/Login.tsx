@@ -1,11 +1,12 @@
-import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { Formik } from 'formik';
 import { Grid } from 'semantic-ui-react';
+import { toast } from 'react-toastify';
 
+import { BASE_API } from '@constants';
 import { LoginForm } from '@components/LoginForm';
 import { useAuth } from '@auth/AuthWrapper';
 import { useNavigate } from 'react-router-dom';
-import { BASE_API } from '@constants';
 
 export type TFormValues = {
   username: string;
@@ -37,9 +38,15 @@ export const Login = () => {
         }),
       });
 
-      const { player } = await response.json();
+      const { error, player } = await response.json();
 
-      if (!response.ok) return;
+      if (!response.ok) {
+        const errorMessage = error.charAt(0).toUpperCase() + error.slice(1);
+
+        toast.error(errorMessage);
+
+        return;
+      }
 
       auth.login(player);
       navigate('/');
