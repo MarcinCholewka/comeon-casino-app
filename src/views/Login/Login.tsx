@@ -49,7 +49,7 @@ export const Login = () => {
       }
 
       auth.login(player);
-      navigate('/');
+      navigate('/games');
     } catch (error) {
       console.error('🚀 ~ file: Login.tsx:22 ~ handleSubmit ~ error:', error);
     }

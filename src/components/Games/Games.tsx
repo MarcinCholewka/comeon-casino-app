@@ -1,4 +1,5 @@
 import { Card, Grid, Header, Image, Loader } from 'semantic-ui-react';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { isEmpty } from 'lodash';
 import { toast } from 'react-toastify';
 import { useEffect, useMemo, useState } from 'react';
@@ -19,7 +20,7 @@ export type TGame = {
 export const Games = () => {
   const [games, setGames] = useState<TGame[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const { filters } = useGamesFilters();
+  const { filters, setCategory, setKeyword } = useGamesFilters();
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -40,6 +41,11 @@ export const Games = () => {
     };
 
     fetchGames();
+
+    return () => {
+      setCategory(0);
+      setKeyword('');
+    };
   }, []);
 
   const filteredGames = useMemo(() => {
@@ -53,35 +59,42 @@ export const Games = () => {
   }, [filters, games]);
 
   return (
-    <Grid.Column width='twelve'>
-      <Header as='h3' dividing={true}>
-        Games
-      </Header>
-      {isLoading ? (
-        <Loader active={true} inline='centered' size='big' />
-      ) : (
-        <div className='ui relaxed divided game items links'>
-          {isEmpty(filteredGames) ? (
-            <Card centered={true} color='olive'>
-              <Image src={searchImage} />
-              <Card.Content>
-                <Card.Header className='!text-[#8EB50E]' textAlign='center'>
-                  No results found
-                </Card.Header>
-                <Card.Description textAlign='center'>
-                  We could't find what you searched for.
-                  <br />
-                  Try searching again.
-                </Card.Description>
-              </Card.Content>
-            </Card>
-          ) : (
-            filteredGames.map((game) => (
-              <GameItem key={game.code} game={game} />
-            ))
-          )}
-        </div>
-      )}
-    </Grid.Column>
+    <HelmetProvider>
+      <Grid.Column width='twelve'>
+        <Header as='h3' dividing={true}>
+          Games
+        </Header>
+        {isLoading ? (
+          <Loader active={true} inline='centered' size='big' />
+        ) : (
+          <>
+            <Helmet>
+              <script src='lib/comeon.game-1.1.min.js' defer></script>
+            </Helmet>
+            <div className='ui relaxed divided game items links'>
+              {isEmpty(filteredGames) ? (
+                <Card centered={true} color='olive'>
+                  <Image src={searchImage} />
+                  <Card.Content>
+                    <Card.Header className='!text-[#8EB50E]' textAlign='center'>
+                      No results found
+                    </Card.Header>
+                    <Card.Description textAlign='center'>
+                      We could't find what you searched for.
+                      <br />
+                      Try searching again.
+                    </Card.Description>
+                  </Card.Content>
+                </Card>
+              ) : (
+                filteredGames.map((game) => (
+                  <GameItem key={game.code} game={game} />
+                ))
+              )}
+            </div>
+          </>
+        )}
+      </Grid.Column>
+    </HelmetProvider>
   );
 };

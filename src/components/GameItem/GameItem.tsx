@@ -1,4 +1,5 @@
 import { Button, Header, Icon, Item } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import { TGame } from '@components/Games';
 
@@ -9,9 +10,7 @@ type Props = {
 export const GameItem = ({ game }: Props) => {
   const { code, icon, name, description } = game;
 
-  const handlePlayClick = async () => {
-    console.info('PLAY TIME =>', code);
-  };
+  const handlePlayClick = () => {};
 
   return (
     <Item className='game'>
@@ -20,16 +19,18 @@ export const GameItem = ({ game }: Props) => {
         <Header>{name}</Header>
         <div className='description'>{description}</div>
         <div className='extra'>
-          <Button
-            className='play'
-            floated='right'
-            secondary={true}
-            inverted={true}
-            type='button'
-            onClick={handlePlayClick}>
-            Play
-            <Icon name='chevron right' />
-          </Button>
+          <Link to={`/games/${code}`}>
+            <Button
+              className='play'
+              floated='right'
+              secondary={true}
+              inverted={true}
+              type='button'
+              onClick={handlePlayClick}>
+              Play
+              <Icon name='chevron right' />
+            </Button>
+          </Link>
         </div>
       </Item.Content>
     </Item>
