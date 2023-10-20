@@ -1,13 +1,14 @@
 import { Button, Header, Icon, Item } from 'semantic-ui-react';
 
+import { TGame } from '@components/Games';
+
 type Props = {
-  code: string;
-  description: string;
-  icon: string;
-  name: string;
+  game: TGame;
 };
 
-export const GameItem = ({ code, description, icon, name }: Props) => {
+export const GameItem = ({ game }: Props) => {
+  const { code, icon, name, description } = game;
+
   const handlePlayClick = async () => {
     console.info('PLAY TIME =>', code);
   };
