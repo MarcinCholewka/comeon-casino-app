@@ -1,7 +1,8 @@
 import { Grid } from 'semantic-ui-react';
-import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { GameLaunch } from '@components/GameLaunch/GameLaunch';
+import { useParams } from 'react-router-dom';
+
+import { GameLaunch } from '@components/GameLaunch';
 
 declare global {
   interface Window {
@@ -44,7 +45,7 @@ export const Ingame = () => {
 
   return (
     <div className='ingame'>
-      <Grid centered container columns={2}>
+      <Grid centered={true} container={true} stackable={true}>
         <GameLaunch />
       </Grid>
     </div>

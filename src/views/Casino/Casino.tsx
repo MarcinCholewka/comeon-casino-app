@@ -8,11 +8,11 @@ import { SearchBox } from '@components/SearchBox';
 export const Casino = () => {
   return (
     <div className='casino'>
-      <Grid>
+      <Grid stackable={true}>
         <PlayerInfo />
         <SearchBox />
       </Grid>
-      <Grid>
+      <Grid stackable={true} reversed='mobile'>
         <Games />
         <Categories />
       </Grid>
