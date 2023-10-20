@@ -1,10 +1,12 @@
-import { Form, useFormikContext } from 'formik';
 import { Button, Icon, Input } from 'semantic-ui-react';
+import { Form, useFormikContext } from 'formik';
 import { isEmpty } from 'lodash';
+import { useTranslation } from 'react-i18next';
 
 import { TFormValues } from '@views/Login';
 
 export const LoginForm = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'Login' });
   const { isSubmitting, errors, handleChange, touched } =
     useFormikContext<TFormValues>();
 
@@ -46,7 +48,7 @@ export const LoginForm = () => {
             disabled={!isEmpty(errors)}
             loading={isSubmitting}
             type='submit'>
-            Login
+            {t('button')}
             <Icon name='chevron right' />
           </Button>
         </div>

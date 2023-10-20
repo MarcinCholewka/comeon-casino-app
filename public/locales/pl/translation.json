@@ -1,0 +1,37 @@
+{
+  "Login": {
+    "button": "Zaloguj się",
+    "errorRequired": "To pole jest wymagane"
+  },
+  "Ingame": {
+    "launchGameError": "Comeon Library lub wymagane funkcje nie znalezione. Upewnij się, że wszystko jest odpowiednio załadowane."
+  },
+  "ErrorBoundary": {
+    "header": "Coś poszło nie tak!",
+    "goToGamesButton": "Przejdź do strony gier"
+  },
+  "GameLaunch": {
+    "backButton": "Powrót"
+  },
+  "Categories": {
+    "header": "Kategorie"
+  },
+  "GameItem": {
+    "playButton": "Zagraj"
+  },
+  "Games": {
+    "header": "Gry",
+    "noResults#1": "Nie znaleziono wyników",
+    "noResults#2": "Nie mogliśmy znaleźć tego, czego szukałeś. Spróbuj ponownie wyszukać."
+  },
+  "NotFound": {
+    "header": "Przepraszam, strona, której szukałeś, nie została znaleziona.",
+    "toMainPageButton": "Powrót do strony głównej"
+  },
+  "PlayerInfo": {
+    "logoutButton": "Wyloguj"
+  },
+  "SearchBox": {
+    "searchPlaceholder": "Wyszukaj grę"
+  }
+}

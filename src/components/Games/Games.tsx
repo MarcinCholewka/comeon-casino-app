@@ -3,6 +3,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { isEmpty } from 'lodash';
 import { toast } from 'react-toastify';
 import { useEffect, useMemo, useState } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 
 import { BASE_API } from '@constants';
 import { GameItem } from '@components/GameItem';
@@ -18,6 +19,7 @@ export type TGame = {
 };
 
 export const Games = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'Games' });
   const [games, setGames] = useState<TGame[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { filters, setCategory, setKeyword } = useGamesFilters();
@@ -62,7 +64,7 @@ export const Games = () => {
     <HelmetProvider>
       <Grid.Column width='twelve'>
         <Header as='h3' dividing={true}>
-          Games
+          {t('header')}
         </Header>
         {isLoading ? (
           <Loader active={true} inline='centered' size='big' />
@@ -77,12 +79,13 @@ export const Games = () => {
                   <Image src={searchImage} />
                   <Card.Content>
                     <Card.Header className='!text-[#8EB50E]' textAlign='center'>
-                      No results found
+                      {t('noResults#1')}
                     </Card.Header>
                     <Card.Description textAlign='center'>
-                      We could't find what you searched for.
-                      <br />
-                      Try searching again.
+                      <Trans i18nKey='Games.noResults#2'>
+                        We could't find what you searched for. <br /> Try
+                        searching again.
+                      </Trans>
                     </Card.Description>
                   </Card.Content>
                 </Card>

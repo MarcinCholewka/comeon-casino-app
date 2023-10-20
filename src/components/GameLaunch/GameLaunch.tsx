@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom';
 import { Button, Grid, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const GameLaunch = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'GameLaunch' });
+
   return (
     <>
       <Grid.Row>
@@ -13,7 +16,7 @@ export const GameLaunch = () => {
               inverted={true}
               size='tiny'>
               <Icon name='chevron left' />
-              Back
+              {t('backButton')}
             </Button>
           </Link>
         </Grid.Column>
