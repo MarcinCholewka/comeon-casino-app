@@ -8,7 +8,6 @@ export default defineConfig({
       "@assets": "/src/assets",
       "@auth": "/src/auth",
       "@components": "/src/components",
-      "@constants": "/src/constants",
       "@hooks": "/src/hooks",
       "@mock": "/src/mock",
       "@routes": "/src/routes",

@@ -1,5 +1,6 @@
 import { Button, Header, Icon, Item } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { TGame } from '@components/Games';
 
@@ -8,6 +9,7 @@ type Props = {
 };
 
 export const GameItem = ({ game }: Props) => {
+  const { t } = useTranslation('translation', { keyPrefix: 'GameItem' });
   const { code, icon, name, description } = game;
 
   const handlePlayClick = () => {};
@@ -27,7 +29,7 @@ export const GameItem = ({ game }: Props) => {
               inverted={true}
               type='button'
               onClick={handlePlayClick}>
-              Play
+              {t('playButton')}
               <Icon name='chevron right' />
             </Button>
           </Link>

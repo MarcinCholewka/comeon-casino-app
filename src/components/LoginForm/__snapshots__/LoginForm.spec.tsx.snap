@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginForm /> should render without crashing 1`] = `
+<div>
+  <form
+    action="#"
+  >
+    <div
+      class="fields"
+    >
+      <div
+        class="required field m-[10px]"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            name="username"
+            placeholder="Username"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="user icon"
+          />
+        </div>
+      </div>
+      <div
+        class="required field m-[10px]"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            name="password"
+            placeholder="Password"
+            type="password"
+          />
+          <i
+            aria-hidden="true"
+            class="lock icon"
+          />
+        </div>
+      </div>
+      <div
+        class="field m-[10px]"
+      >
+        <button
+          class="ui button"
+          type="submit"
+        >
+          Login
+          <i
+            aria-hidden="true"
+            class="chevron right icon"
+          />
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;

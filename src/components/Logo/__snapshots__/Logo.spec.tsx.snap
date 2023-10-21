@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Logo /> should render without crashing 1`] = `
+<div>
+  <div
+    class="ui one column center aligned page grid"
+  >
+    <div
+      class="column twelve wide"
+    >
+      <img
+        alt="logo"
+        src="src/assets/logo.svg"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Categories/ > should render without crashing 1`] = `
+<div>
+  <div
+    class="four wide column"
+  >
+    <h3
+      class="ui dividing header"
+    >
+      Categories
+    </h3>
+    <div
+      class="ui animated selection list"
+      role="list"
+    />
+  </div>
+</div>
+`;

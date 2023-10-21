@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryItem /> should render without crashing 1`] = `
+<div>
+  <div
+    class="item"
+    role="listitem"
+  >
+    Category #1
+  </div>
+</div>
+`;
