@@ -1,6 +1,7 @@
 import { Grid, Header, List, Loader } from 'semantic-ui-react';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { BASE_API } from '@constants';
 import { CategoryItem } from '@components/CategoryItem/CategoryItem';
@@ -11,6 +12,7 @@ export type TCategory = {
 };
 
 export const Categories = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'Categories' });
   const [categories, setCategories] = useState<TCategory[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -41,7 +43,7 @@ export const Categories = () => {
   return (
     <Grid.Column width='four'>
       <Header as='h3' dividing={true}>
-        Categories
+        {t('header')}
       </Header>
       {isLoading ? (
         <Loader active={true} inline='centered' size='big' />

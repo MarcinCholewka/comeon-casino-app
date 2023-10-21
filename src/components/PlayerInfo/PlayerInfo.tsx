@@ -1,9 +1,11 @@
 import { Button, Icon, Grid, List, Image } from 'semantic-ui-react';
+import { useTranslation } from 'react-i18next';
 
 import { BASE_API } from '@constants';
 import { useAuth } from '@auth/AuthWrapper';
 
 export const PlayerInfo = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'PlayerInfo' });
   const auth = useAuth();
 
   if (!auth.player) return;
@@ -49,7 +51,7 @@ export const PlayerInfo = () => {
       </List>
       <Button secondary={true} onClick={handleLogout}>
         <Icon name='chevron left' />
-        Log Out
+        {t('logoutButton')}
       </Button>
     </Grid.Column>
   );

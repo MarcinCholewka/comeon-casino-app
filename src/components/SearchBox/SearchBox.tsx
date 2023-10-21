@@ -1,11 +1,13 @@
 import { ChangeEvent, useCallback, useMemo } from 'react';
 import { Grid, Input } from 'semantic-ui-react';
+import { useTranslation } from 'react-i18next';
 
 import { DEBOUNCE_TIME } from '@constants';
 import { useGamesFilters } from '@hooks/useGamesFilterContext';
 import debounce from '@utils/debounce';
 
 export const SearchBox = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'SearchBox' });
   const { setKeyword } = useGamesFilters();
 
   const handleChangeSearch = useCallback(
@@ -24,7 +26,7 @@ export const SearchBox = () => {
       <Input
         icon={{ name: 'search' }}
         type='text'
-        placeholder='Search Game'
+        placeholder={t('searchPlaceholder')}
         onChange={debouncedHandleChangeSearch}
       />
     </Grid.Column>

@@ -1,0 +1,36 @@
+{
+  "Login": {
+    "button": "Login",
+    "errorRequired": "This field is required"
+  },
+  "Ingame": {
+    "launchGameError": "ComeOn library or required functions not found. Make sure it is properly loaded."
+  },
+  "ErrorBoundary": {
+    "header": "Something went wrong!",
+    "goToGamesButton": "Go to games page"
+  },
+  "GameLaunch": {
+    "backButton": "Back"
+  },
+  "Categories": {
+    "header": "Categories"
+  },
+  "GameItem": {
+    "playButton": "Play"
+  },
+  "Games": {
+    "header": "Games",
+    "noResults#1": "No results found"
+  },
+  "NotFound": {
+    "header": "Sorry, the page you were looking for was not found.",
+    "toMainPageButton": "Return to main page"
+  },
+  "PlayerInfo": {
+    "logoutButton": "Log Out"
+  },
+  "SearchBox": {
+    "searchPlaceholder": "Search Game"
+  }
+}

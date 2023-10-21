@@ -1,7 +1,9 @@
-import { useNavigate, useRouteError } from 'react-router-dom';
 import { Card, Icon, Button } from 'semantic-ui-react';
+import { useNavigate, useRouteError } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const ErrorBoundary = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'ErrorBoundary' });
   const error = useRouteError();
   const navigate = useNavigate();
 
@@ -20,13 +22,13 @@ export const ErrorBoundary = () => {
       />
       <Card.Content>
         <Card.Header className='!text-[#8EB50E]' textAlign='center'>
-          Something went wrong!
+          {t('header')}
         </Card.Header>
         <Card.Description textAlign='center'>
           {/* @ts-ignore */}
           {error.message}
           <Button className='!mt-5' onClick={handleGoToGamesClick}>
-            Go to games page
+            {t('goToGamesButton')}
           </Button>
         </Card.Description>
       </Card.Content>

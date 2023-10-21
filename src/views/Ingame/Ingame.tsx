@@ -1,6 +1,7 @@
 import { Grid } from 'semantic-ui-react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { GameLaunch } from '@components/GameLaunch';
 
@@ -15,6 +16,7 @@ declare global {
 }
 
 export const Ingame = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'Ingame' });
   const { code } = useParams<{ code: string }>();
 
   useEffect(() => {
@@ -26,9 +28,7 @@ export const Ingame = () => {
       ) {
         code && window.comeon.game.launch(code);
       } else {
-        throw new Error(
-          'ComeOn library or required functions not found. Make sure it is properly loaded.',
-        );
+        throw new Error(t('launchGameError'));
       }
     };
 
