@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { BASE_API } from '@constants';
+import { BASE_API } from '@utils/constants';
 import { LoginForm } from '@components/LoginForm';
 import { useAuth } from '@auth/AuthWrapper';
 
@@ -20,8 +20,8 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
-    username: Yup.string().required(t('errorRequired')),
-    password: Yup.string().required(t('errorRequired')),
+    username: Yup.string().required(t('usernameError')),
+    password: Yup.string().required(t('passwordError')),
   });
 
   const handleSubmit = async (values: TFormValues): Promise<void> => {

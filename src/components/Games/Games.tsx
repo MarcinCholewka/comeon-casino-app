@@ -5,10 +5,10 @@ import { toast } from 'react-toastify';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
 
-import { BASE_API } from '@constants';
+import { BASE_API } from '@utils/constants';
 import { GameItem } from '@components/GameItem';
 import { useGamesFilters } from '@hooks/useGamesFilterContext';
-import searchImage from '@assets/search/search-image.jpg';
+import searchImage from '@assets/search/searchImage.jpg';
 
 export type TGame = {
   name: string;

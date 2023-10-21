@@ -19,6 +19,7 @@ export const LanguageSwitcher = () => {
   return (
     <div className='absolute z-10 right-1 sm:right-4 top-1 sm-top-4'>
       <label
+        data-testid='lang-switcher'
         htmlFor='lang-switcher'
         className='inline-flex items-center p-2 rounded-md cursor-pointer dark:text-gray-800'>
         <input

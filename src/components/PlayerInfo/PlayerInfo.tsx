@@ -1,7 +1,7 @@
 import { Button, Icon, Grid, List, Image } from 'semantic-ui-react';
 import { useTranslation } from 'react-i18next';
 
-import { BASE_API } from '@constants';
+import { BASE_API } from '@utils/constants';
 import { useAuth } from '@auth/AuthWrapper';
 
 export const PlayerInfo = () => {

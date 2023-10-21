@@ -3,8 +3,8 @@ import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { BASE_API } from '@constants';
-import { CategoryItem } from '@components/CategoryItem/CategoryItem';
+import { BASE_API } from '@utils/constants';
+import { CategoryItem } from '@components/CategoryItem';
 
 export type TCategory = {
   id: number;

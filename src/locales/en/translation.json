@@ -1,7 +1,8 @@
 {
   "Login": {
     "button": "Login",
-    "errorRequired": "This field is required"
+    "usernameError": "Username is required",
+    "passwordError": "Password is required"
   },
   "Ingame": {
     "launchGameError": "ComeOn library or required functions not found. Make sure it is properly loaded."

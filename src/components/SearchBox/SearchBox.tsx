@@ -2,7 +2,7 @@ import { ChangeEvent, useCallback, useMemo } from 'react';
 import { Grid, Input } from 'semantic-ui-react';
 import { useTranslation } from 'react-i18next';
 
-import { DEBOUNCE_TIME } from '@constants';
+import { DEBOUNCE_TIME } from '@utils/constants';
 import { useGamesFilters } from '@hooks/useGamesFilterContext';
 import debounce from '@utils/debounce';
 

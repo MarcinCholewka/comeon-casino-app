@@ -1,7 +1,8 @@
 {
   "Login": {
     "button": "Zaloguj się",
-    "errorRequired": "To pole jest wymagane"
+    "usernameError": "Nazwa użytkownika jest wymagana",
+    "passwordError": "Hasło jest wymagane"
   },
   "Ingame": {
     "launchGameError": "Comeon Library lub wymagane funkcje nie znalezione. Upewnij się, że wszystko jest odpowiednio załadowane."
