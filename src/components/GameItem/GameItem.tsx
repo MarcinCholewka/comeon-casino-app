@@ -2,7 +2,7 @@ import { Button, Header, Icon, Item } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import { TGame } from '@components/Games';
+import { TGame } from '@api';
 
 type Props = {
   game: TGame;
