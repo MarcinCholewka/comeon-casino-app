@@ -1,49 +1,25 @@
 import { Card, Grid, Header, Image, Loader } from 'semantic-ui-react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { isEmpty } from 'lodash';
-import { toast } from 'react-toastify';
-import { useEffect, useMemo, useState } from 'react';
+import { isEmpty, isUndefined } from 'lodash';
+import { useEffect, useMemo } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { useTranslation, Trans } from 'react-i18next';
 
-import { BASE_API } from '@constants';
+import { fetchGames } from '@api';
 import { GameItem } from '@components/GameItem';
 import { useGamesFilters } from '@hooks/useGamesFilterContext';
 import searchImage from '@assets/search/search-image.jpg';
 
-export type TGame = {
-  name: string;
-  description: string;
-  code: string;
-  icon: string;
-  categoryIds: number[];
-};
-
 export const Games = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'Games' });
-  const [games, setGames] = useState<TGame[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   const { filters, setCategory, setKeyword } = useGamesFilters();
 
+  const { data: games, isLoading } = useQuery({
+    queryFn: () => fetchGames(),
+    queryKey: ['games'],
+  });
+
   useEffect(() => {
-    const fetchGames = async () => {
-      setIsLoading(true);
-
-      try {
-        const response = await fetch(`${BASE_API}/games`);
-        const data = await response.json();
-
-        setGames(data);
-      } catch (error: unknown) {
-        console.error('🚀 ~ file: Games.tsx:31 ~ fetchGames ~ error:', error);
-
-        toast.error('Something went wrong! Please try again.');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchGames();
-
     return () => {
       setCategory(0);
       setKeyword('');
@@ -53,7 +29,7 @@ export const Games = () => {
   const filteredGames = useMemo(() => {
     const { category, keyword } = filters;
 
-    return games.filter(
+    return games?.filter(
       (game) =>
         game.categoryIds.includes(category) &&
         game.name.toLowerCase().includes(keyword.toLowerCase()),
@@ -74,7 +50,7 @@ export const Games = () => {
               <script src='lib/comeon.game-1.1.min.js' defer></script>
             </Helmet>
             <div className='ui relaxed divided game items links'>
-              {isEmpty(filteredGames) ? (
+              {isEmpty(filteredGames) || isUndefined(filteredGames) ? (
                 <Card centered={true} color='olive'>
                   <Image src={searchImage} />
                   <Card.Content>
