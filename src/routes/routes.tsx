@@ -1,6 +1,7 @@
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route,
 } from 'react-router-dom';
 
@@ -9,7 +10,6 @@ import { Casino } from '@views/Casino';
 import { ErrorBoundary } from '@components/ErrorBoundary';
 import { Ingame } from '@views/Ingame/Ingame';
 import { Login } from '@views/Login';
-import { NotFound } from '@components/NotFound';
 import { RequireAuth } from '@components/RequireAuth';
 
 export const routes = createBrowserRouter(
@@ -32,7 +32,14 @@ export const routes = createBrowserRouter(
           </RequireAuth>
         }
       />
-      <Route path='*' element={<NotFound />} />
+      <Route
+        path='*'
+        element={
+          <RequireAuth>
+            <Navigate to='/games' />
+          </RequireAuth>
+        }
+      />
       <Route path='login' element={<Login />} />
     </Route>,
   ),
